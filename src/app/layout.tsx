@@ -6,7 +6,8 @@ import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
   title: 'DraftSense',
-  description: 'Generate professional and personal emails with AI.',
+  description: 'Generate professional and personal emails with a powerful email assistant.',
+  keywords: ['email generator', 'email assistant', 'cover letter writer', 'salary negotiation', 'professional emails', 'marketing emails'],
 };
 
 export default function RootLayout({
