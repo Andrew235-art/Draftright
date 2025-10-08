@@ -1,12 +1,12 @@
 
 "use client"
 
-import { useState, useTransition, useEffect, useActionState } from 'react'
+import { useState, useEffect, useActionState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { generateDraftAction, FormState } from '@/app/actions'
-import { scenarios, ScenarioId, Scenario, Tone, tones, FormFields } from '@/lib/scenarios'
+import { scenarios, ScenarioId, Scenario, FormFields } from '@/lib/scenarios'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
@@ -15,7 +15,6 @@ import { Textarea } from '@/components/ui/textarea'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Loader2 } from 'lucide-react'
 import { OutputDisplay } from './output-display'
-import { cn } from '@/lib/utils'
 import { useToast } from '@/hooks/use-toast'
 
 type Step = 'scenario' | 'form' | 'result'
@@ -25,7 +24,7 @@ const ScenarioSelector = ({ dict, onSelect }: { dict: Dictionary, onSelect: (sce
     <Card>
         <CardHeader>
             <CardTitle className="font-headline text-2xl">{dict.main.scenario_select_title}</CardTitle>
-            <CardDescription>Start by choosing a template for your email.</CardDescription>
+            <CardDescription>{dict.main.scenario_select_subtitle}</CardDescription>
         </CardHeader>
         <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {Object.values(scenarios).map((scenario) => {
@@ -54,6 +53,7 @@ const renderFormField = (field: any, fieldName: FormFields, dict: Dictionary) =>
     const commonProps = {
         ...field,
         placeholder: dict.form_fields[fieldName].placeholder,
+        value: field.value || '',
     }
     const useTextarea = ['key_achievements', 'progress_summary', 'blockers', 'next_steps', 'specific_questions'].includes(fieldName);
 
@@ -72,6 +72,10 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
 
     const form = useForm({
         resolver: zodResolver(selectedScenario?.formSchema || z.object({})),
+        defaultValues: selectedScenario ? selectedScenario.fields.reduce((acc, field) => {
+            acc[field] = '';
+            return acc;
+        }, { tone: 'formal' } as Record<string, string>) : {}
     });
 
     useEffect(() => {
@@ -90,7 +94,6 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
 
     const handleScenarioSelect = (scenario: Scenario) => {
         setSelectedScenario(scenario);
-        // Set default values for the new form
         const defaultValues = scenario.fields.reduce((acc, field) => {
             acc[field] = '';
             return acc;
@@ -99,6 +102,12 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
         form.reset(defaultValues);
         setStep('form');
     };
+
+    const handleStartOver = () => {
+        setStep('scenario');
+        setSelectedScenario(null);
+        form.reset({});
+    }
 
     const onSubmit = (values: z.infer<any>) => {
         if (!selectedScenario) return;
@@ -117,12 +126,7 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
     if (step === 'result' && state.draft) {
         return (
             <div className="space-y-8">
-                <OutputDisplay draft={state.draft} dict={dict.main} />
-                <Button onClick={() => {
-                  setStep('scenario');
-                  setSelectedScenario(null);
-                  form.reset();
-                }}>Start Over</Button>
+                <OutputDisplay draft={state.draft} dict={dict.main} onStartOver={handleStartOver} />
             </div>
         );
     }
@@ -172,7 +176,7 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
                                                 defaultValue={field.value}
                                                 className="flex flex-wrap gap-4"
                                             >
-                                                {tones.map((tone) => (
+                                                {['formal', 'friendly', 'direct', 'humble'].map((tone) => (
                                                     <FormItem key={tone} className="flex items-center space-x-3 space-y-0">
                                                         <FormControl>
                                                             <RadioGroupItem value={tone} id={tone}/>
@@ -191,7 +195,10 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
                         </CardContent>
                     </Card>
 
-                    <div className="flex justify-end">
+                    <div className="flex justify-between items-center">
+                        <Button type="button" variant="ghost" onClick={handleStartOver}>
+                            {dict.main.back_button}
+                        </Button>
                         <Button type="submit" disabled={isPending} size="lg">
                             {isPending ? (
                                 <>
