@@ -41,6 +41,26 @@
     "resignation_letter": {
       "title": "Lettre de Démission",
       "description": "Rédigez une lettre de démission formelle."
+    },
+    "informational_interview": {
+      "title": "Demande d'Entretien d'Information",
+      "description": "Demandez poliment à un professionnel pour une brève discussion."
+    },
+    "post_interview_follow_up": {
+      "title": "Remerciement Post-Entretien",
+      "description": "Remerciez un recruteur et réitérez votre intérêt."
+    },
+    "networking_follow_up": {
+      "title": "Suivi de Réseautage",
+      "description": "Reprenez contact avec une personne rencontrée lors d'un événement."
+    },
+    "meeting_request": {
+      "title": "Demande de Réunion",
+      "description": "Proposez une réunion de manière professionnelle avec un ordre du jour clair."
+    },
+    "decline_request": {
+      "title": "Refuser une Demande",
+      "description": "Dites 'non' avec élégance à une demande ou une invitation."
     }
   },
   "form_fields": {
@@ -91,6 +111,46 @@
     "your_name": {
       "label": "Votre Nom",
       "placeholder": "ex: John Smith"
+    },
+    "recipient_role_company": {
+      "label": "Rôle et Entreprise du Destinataire",
+      "placeholder": "ex: Directeur Principal chez TechCorp"
+    },
+    "field_of_interest": {
+      "label": "Votre Domaine d'Intérêt",
+      "placeholder": "ex: génie logiciel"
+    },
+    "job_title": {
+      "label": "Intitulé du Poste pour lequel vous avez postulé",
+      "placeholder": "ex: Chef de Produit"
+    },
+    "key_discussion_point": {
+      "label": "Point Clé de la Discussion",
+      "placeholder": "ex: La conversation sur le lancement de la nouvelle fonctionnalité"
+    },
+    "event_context": {
+      "label": "Événement ou Contexte de la Rencontre",
+      "placeholder": "ex: à la Conférence des Innovateurs Tech mardi dernier"
+    },
+    "point_of_connection": {
+      "label": "Point de Connexion",
+      "placeholder": "ex: Nous avons discuté de l'avenir de l'IA dans le marketing"
+    },
+    "meeting_purpose": {
+      "label": "Objectif / Ordre du Jour de la Réunion",
+      "placeholder": "ex: Pour discuter de la proposition de budget du T4"
+    },
+    "proposed_times": {
+      "label": "Horaires Proposés",
+      "placeholder": "ex: Mardi à 14h ou Mercredi à 10h"
+    },
+    "request_declined": {
+      "label": "Demande Refusée",
+      "placeholder": "ex: L'invitation à prendre la parole à la conférence"
+    },
+    "reason": {
+      "label": "Raison du Refus",
+      "placeholder": "ex: En raison d'un engagement antérieur et de la charge de travail actuelle"
     }
   }
 }

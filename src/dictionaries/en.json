@@ -41,6 +41,26 @@
     "resignation_letter": {
       "title": "Resignation Letter",
       "description": "Write a formal resignation letter."
+    },
+    "informational_interview": {
+      "title": "Informational Interview Request",
+      "description": "Politely ask a professional for a brief chat."
+    },
+    "post_interview_follow_up": {
+      "title": "Post-Interview Thank You",
+      "description": "Thank an interviewer and reiterate your interest."
+    },
+    "networking_follow_up": {
+      "title": "Networking Follow-Up",
+      "description": "Reconnect with someone you met at an event."
+    },
+    "meeting_request": {
+      "title": "Meeting Request",
+      "description": "Professionally propose a meeting with a clear agenda."
+    },
+    "decline_request": {
+      "title": "Decline a Request",
+      "description": "Gracefully say 'no' to a request or invitation."
     }
   },
   "form_fields": {
@@ -91,6 +111,46 @@
     "your_name": {
       "label": "Your Name",
       "placeholder": "e.g., John Smith"
+    },
+    "recipient_role_company": {
+      "label": "Recipient's Role & Company",
+      "placeholder": "e.g., Senior Manager at TechCorp"
+    },
+    "field_of_interest": {
+      "label": "Your Field of Interest",
+      "placeholder": "e.g., software engineering"
+    },
+    "job_title": {
+      "label": "Job Title You Interviewed For",
+      "placeholder": "e.g., Product Manager"
+    },
+    "key_discussion_point": {
+      "label": "Key Discussion Point",
+      "placeholder": "e.g., The conversation about the new feature launch"
+    },
+    "event_context": {
+      "label": "Event or Context of Meeting",
+      "placeholder": "e.g., at the Tech Innovators Conference last Tuesday"
+    },
+    "point_of_connection": {
+      "label": "Point of Connection",
+      "placeholder": "e.g., We discussed the future of AI in marketing"
+    },
+    "meeting_purpose": {
+      "label": "Meeting Purpose / Agenda",
+      "placeholder": "e.g., To discuss the Q4 budget proposal"
+    },
+    "proposed_times": {
+      "label": "Proposed Times",
+      "placeholder": "e.g., Tuesday at 2 PM or Wednesday at 10 AM"
+    },
+    "request_declined": {
+      "label": "Request Being Declined",
+      "placeholder": "e.g., The invitation to speak at the conference"
+    },
+    "reason": {
+      "label": "Reason for Declining",
+      "placeholder": "e.g., Due to a prior commitment and current workload"
     }
   }
 }

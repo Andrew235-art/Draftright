@@ -41,6 +41,26 @@
     "resignation_letter": {
       "title": "Carta de Renuncia",
       "description": "Escribe una carta de renuncia formal."
+    },
+    "informational_interview": {
+      "title": "Solicitud de Entrevista Informativa",
+      "description": "Pide cortésmente una breve charla a un profesional."
+    },
+    "post_interview_follow_up": {
+      "title": "Agradecimiento Post-Entrevista",
+      "description": "Agradece a un entrevistador y reitera tu interés."
+    },
+    "networking_follow_up": {
+      "title": "Seguimiento de Networking",
+      "description": "Vuelve a conectar con alguien que conociste en un evento."
+    },
+    "meeting_request": {
+      "title": "Solicitud de Reunión",
+      "description": "Propón profesionalmente una reunión con una agenda clara."
+    },
+    "decline_request": {
+      "title": "Rechazar una Solicitud",
+      "description": "Di 'no' con elegancia a una solicitud o invitación."
     }
   },
   "form_fields": {
@@ -91,6 +111,46 @@
     "your_name": {
       "label": "Tu Nombre",
       "placeholder": "ej., John Smith"
+    },
+    "recipient_role_company": {
+      "label": "Cargo y Empresa del Destinatario",
+      "placeholder": "ej., Gerente Senior en TechCorp"
+    },
+    "field_of_interest": {
+      "label": "Tu Campo de Interés",
+      "placeholder": "ej., ingeniería de software"
+    },
+    "job_title": {
+      "label": "Puesto para el que te Entrevistaron",
+      "placeholder": "ej., Gerente de Producto"
+    },
+    "key_discussion_point": {
+      "label": "Punto Clave de la Discusión",
+      "placeholder": "ej., La conversación sobre el lanzamiento de la nueva función"
+    },
+    "event_context": {
+      "label": "Evento o Contexto del Encuentro",
+      "placeholder": "ej., en la Conferencia de Innovadores Tecnológicos el martes pasado"
+    },
+    "point_of_connection": {
+      "label": "Punto de Conexión",
+      "placeholder": "ej., Discutimos el futuro de la IA en el marketing"
+    },
+    "meeting_purpose": {
+      "label": "Propósito / Agenda de la Reunión",
+      "placeholder": "ej., Para discutir la propuesta de presupuesto del Q4"
+    },
+    "proposed_times": {
+      "label": "Horarios Propuestos",
+      "placeholder": "ej., Martes a las 14h o Miércoles a las 10h"
+    },
+    "request_declined": {
+      "label": "Solicitud que se Rechaza",
+      "placeholder": "ej., La invitación para hablar en la conferencia"
+    },
+    "reason": {
+      "label": "Razón para Rechazar",
+      "placeholder": "ej., Debido a un compromiso previo y la carga de trabajo actual"
     }
   }
 }
