@@ -72,7 +72,6 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
 
     const form = useForm({
         resolver: zodResolver(selectedScenario?.formSchema || z.object({})),
-        defaultValues: {},
     });
 
     useEffect(() => {
@@ -91,7 +90,13 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
 
     const handleScenarioSelect = (scenario: Scenario) => {
         setSelectedScenario(scenario);
-        form.reset({});
+        // Set default values for the new form
+        const defaultValues = scenario.fields.reduce((acc, field) => {
+            acc[field] = '';
+            return acc;
+        }, {} as Record<string, string>);
+        defaultValues.tone = 'formal';
+        form.reset(defaultValues);
         setStep('form');
     };
 
@@ -159,7 +164,6 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
                             <FormField
                                 control={form.control}
                                 name="tone"
-                                defaultValue="formal"
                                 render={({ field }) => (
                                     <FormItem className="space-y-3">
                                         <FormControl>
