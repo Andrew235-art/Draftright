@@ -119,7 +119,12 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
     if (step === 'result' && state.draft) {
         return (
             <div className="space-y-8">
-                <OutputDisplay draft={state.draft} dict={dict.main} onStartOver={handleStartOver} />
+                <OutputDisplay draft={state.draft} dict={dict.main} />
+                 <div className="flex justify-start">
+                    <Button type="button" variant="ghost" onClick={handleStartOver}>
+                        {dict.main.start_over_button}
+                    </Button>
+                </div>
             </div>
         );
     }
