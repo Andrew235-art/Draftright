@@ -1,4 +1,5 @@
 
+
 "use client"
 
 import { useState, useEffect, useActionState, useRef } from 'react'
@@ -82,6 +83,7 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
     const form = useForm({
         resolver: zodResolver(selectedScenario?.formSchema || z.object({})),
         defaultValues: getDefaultValues(selectedScenario),
+        mode: 'onChange'
     });
 
     useEffect(() => {
@@ -126,15 +128,12 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
         return (
             <Form {...form}>
                 <form 
-                    action={(formData: FormData) => {
-                        const values = form.getValues();
-                        formData.append('scenarioId', selectedScenario.id);
-                        formData.append('language', lang);
-                        formData.append('formData', JSON.stringify(values));
-                        formAction(formData);
-                    }}
+                    action={formAction}
                     className="space-y-8"
                 >
+                    <input type="hidden" name="scenarioId" value={selectedScenario.id} />
+                    <input type="hidden" name="language" value={lang} />
+                    
                     <Card>
                         <CardHeader>
                             <CardTitle className="font-headline text-2xl">{dict.main.form_title}</CardTitle>
@@ -175,6 +174,7 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
                                                 onValueChange={field.onChange}
                                                 defaultValue={field.value}
                                                 className="flex flex-wrap gap-4"
+                                                name="tone"
                                             >
                                                 {['formal', 'friendly', 'direct', 'humble'].map((tone) => (
                                                     <FormItem key={tone} className="flex items-center space-x-3 space-y-0">

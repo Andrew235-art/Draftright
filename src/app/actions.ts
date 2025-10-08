@@ -1,3 +1,4 @@
+
 "use server";
 
 import { z } from "zod";
@@ -19,38 +20,37 @@ export type FormState = {
 
 export async function generateDraftAction(prevState: FormState, formData: FormData): Promise<FormState> {
   try {
-    const rawData = {
-      scenarioId: formData.get('scenarioId'),
-      tone: formData.get('tone'),
-      language: formData.get('language'),
-      formData: JSON.parse(formData.get('formData') as string),
-    };
-
-    const validatedData = formSchema.safeParse(rawData);
-
-    if (!validatedData.success) {
-      console.error(validatedData.error);
-      return { error: 'Invalid input data.', timestamp: Date.now() };
-    }
-
-    const { scenarioId, tone, language, formData: input } = validatedData.data;
-    
+    const scenarioId = formData.get('scenarioId') as ScenarioId;
     const scenarioDetails = scenarios[scenarioId];
+    
     if (!scenarioDetails) {
       return { error: "Invalid scenario selected.", timestamp: Date.now() };
     }
 
+    const rawData: Record<string, any> = {
+      scenarioId: scenarioId,
+      tone: formData.get('tone'),
+      language: formData.get('language'),
+    };
+    
+    // Extract form data based on scenario fields
+    const scenarioFormData: Record<string, any> = {};
+    for (const field of scenarioDetails.fields) {
+      scenarioFormData[field] = formData.get(field);
+    }
+    
     // Validate form data against scenario schema
-    const parsedFormData = scenarioDetails.formSchema.safeParse(input);
+    const parsedFormData = scenarioDetails.formSchema.safeParse(scenarioFormData);
     if (!parsedFormData.success) {
+        console.error(parsedFormData.error);
         return { error: 'Form data is invalid.', timestamp: Date.now() };
     }
-
+    
     const result = await generateEmailDraft({
       scenario: scenarioDetails.i18n_key,
       input: parsedFormData.data,
-      tone,
-      language,
+      tone: rawData.tone,
+      language: rawData.language,
     });
 
     if (!result.draft) {
