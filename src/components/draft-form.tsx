@@ -1,7 +1,7 @@
 
 "use client"
 
-import { useState, useEffect, useActionState } from 'react'
+import { useState, useEffect, useActionState, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -68,6 +68,7 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
     const [selectedScenario, setSelectedScenario] = useState<Scenario | null>(null);
     const { toast } = useToast();
     const [state, formAction, isPending] = useActionState<FormState, FormData>(generateDraftAction, { draft: undefined, error: undefined });
+    const formRef = useRef<HTMLFormElement>(null);
 
     const form = useForm({
         resolver: zodResolver(selectedScenario?.formSchema || z.object({})),
@@ -108,16 +109,6 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
         form.reset({});
     }
 
-    const onSubmit = (values: z.infer<any>) => {
-        if (!selectedScenario) return;
-        const formData = new FormData();
-        formData.append('scenarioId', selectedScenario.id);
-        formData.append('tone', form.getValues('tone'));
-        formData.append('language', lang);
-        formData.append('formData', JSON.stringify(values));
-        formAction(formData);
-    };
-
     if (step === 'scenario') {
         return <ScenarioSelector dict={dict} onSelect={handleScenarioSelect} />;
     }
@@ -133,7 +124,22 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
     if (step === 'form' && selectedScenario) {
         return (
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                <form 
+                    ref={formRef}
+                    action={formAction}
+                    onSubmit={form.handleSubmit(() => {
+                        if (!selectedScenario) return;
+                        const formData = new FormData(formRef.current!);
+                        const values = form.getValues();
+                        
+                        formData.append('scenarioId', selectedScenario.id);
+                        formData.append('language', lang);
+                        formData.append('formData', JSON.stringify(values));
+                        
+                        formAction(formData);
+                    })}
+                    className="space-y-8"
+                >
                     <Card>
                         <CardHeader>
                             <CardTitle className="font-headline text-2xl">{dict.main.form_title}</CardTitle>
@@ -178,7 +184,7 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
                                                 {['formal', 'friendly', 'direct', 'humble'].map((tone) => (
                                                     <FormItem key={tone} className="flex items-center space-x-3 space-y-0">
                                                         <FormControl>
-                                                            <RadioGroupItem value={tone} id={tone}/>
+                                                            <RadioGroupItem value={tone} id={tone} />
                                                         </FormControl>
                                                         <FormLabel className="font-normal capitalize cursor-pointer" htmlFor={tone}>
                                                             {dict.main.tones[tone]}
