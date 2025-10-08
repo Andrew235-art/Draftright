@@ -1,6 +1,7 @@
 import { Locale } from '@/i18n.config'
 import { getDictionary } from '@/lib/dictionaries'
 import { DraftForm } from '@/components/draft-form'
+import { HowItWorks } from '@/components/how-it-works'
 
 export default async function Home({
   params: { lang },
@@ -18,6 +19,8 @@ export default async function Home({
           {dict.main.subtitle}
         </p>
       </header>
+
+      <HowItWorks dict={dict.how_it_works} />
 
       <DraftForm dict={dict} lang={lang} />
     </div>

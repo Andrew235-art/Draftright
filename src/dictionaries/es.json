@@ -28,6 +28,15 @@
         "description": "No se pudo generar el borrador. Por favor, inténtalo de nuevo."
     }
   },
+  "how_it_works": {
+    "title": "Cómo Funciona",
+    "step1_title": "1. Elige Escenario",
+    "step1_description": "Selecciona entre una amplia gama de plantillas profesionales como cartas de presentación, negociaciones salariales o actualizaciones de proyectos.",
+    "step2_title": "2. Añade Contexto",
+    "step2_description": "Completa algunos detalles clave para personalizar el borrador del correo electrónico para tus necesidades específicas.",
+    "step3_title": "3. Obtén Tu Borrador",
+    "step3_description": "Recibe un borrador de correo electrónico profesional y perfectamente formateado en segundos. Cópialo y úsalo en cualquier lugar."
+  },
   "scenarios": {
     "salary_negotiation": {
       "title": "Negociación Salarial",

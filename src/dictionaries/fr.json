@@ -28,6 +28,15 @@
         "description": "Échec de la génération du brouillon. Veuillez réessayer."
     }
   },
+  "how_it_works": {
+    "title": "Comment Ça Marche",
+    "step1_title": "1. Choisissez un Scénario",
+    "step1_description": "Sélectionnez parmi une large gamme de modèles professionnels comme des lettres de motivation, des négociations salariales ou des mises à jour de projet.",
+    "step2_title": "2. Ajoutez du Contexte",
+    "step2_description": "Remplissez quelques détails clés pour personnaliser le brouillon d'e-mail pour vos besoins spécifiques.",
+    "step3_title": "3. Obtenez Votre Brouillon",
+    "step3_description": "Recevez un brouillon d'e-mail professionnel et parfaitement formaté en quelques secondes. Copiez-le et utilisez-le n'importe où."
+  },
   "scenarios": {
     "salary_negotiation": {
       "title": "Négociation de Salaire",

@@ -28,6 +28,15 @@
         "description": "Failed to generate draft. Please try again."
     }
   },
+  "how_it_works": {
+    "title": "How It Works",
+    "step1_title": "1. Choose Scenario",
+    "step1_description": "Select from a wide range of professional templates like cover letters, salary negotiations, or project updates.",
+    "step2_title": "2. Add Context",
+    "step2_description": "Fill in a few key details to personalize the email draft for your specific needs.",
+    "step3_title": "3. Get Your Draft",
+    "step3_description": "Receive a perfectly formatted and professional email draft in seconds. Copy and use it anywhere."
+  },
   "scenarios": {
     "salary_negotiation": {
       "title": "Salary Negotiation",
