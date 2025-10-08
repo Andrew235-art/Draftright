@@ -68,6 +68,18 @@
     "cover_letter": {
       "title": "Job Application Cover Letter",
       "description": "Write a compelling cover letter for a job opening."
+    },
+    "promotional_email": {
+      "title": "Promotional Email",
+      "description": "Create a compelling email to promote a product or service."
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Draft an engaging newsletter to share updates or content."
+    },
+    "transactional_email": {
+      "title": "Transactional Email",
+      "description": "Write a clear order confirmation, receipt, or notice."
     }
   },
   "form_fields": {
@@ -170,6 +182,42 @@
     "matching_skills": {
       "label": "Your Matching Skills & Experiences",
       "placeholder": "Briefly describe how your skills align with the requirements."
+    },
+    "product_name": {
+      "label": "Product / Service Name",
+      "placeholder": "e.g., Our new premium widget"
+    },
+    "target_audience": {
+      "label": "Target Audience",
+      "placeholder": "e.g., Tech enthusiasts, small business owners"
+    },
+    "offer_details": {
+      "label": "Offer Details",
+      "placeholder": "e.g., 20% off for a limited time"
+    },
+    "call_to_action": {
+      "label": "Call to Action",
+      "placeholder": "e.g., Shop Now, Learn More"
+    },
+    "newsletter_title": {
+      "label": "Newsletter Title",
+      "placeholder": "e.g., This Week in Tech"
+    },
+    "main_content": {
+      "label": "Main Content / Headline",
+      "placeholder": "Summarize the key message of the newsletter."
+    },
+    "secondary_content": {
+      "label": "Secondary Content (Optional)",
+      "placeholder": "Include any additional articles, links, or updates."
+    },
+    "transaction_type": {
+      "label": "Transaction Type",
+      "placeholder": "e.g., Order Confirmation, Password Reset"
+    },
+    "order_details": {
+      "label": "Order Details (Optional)",
+      "placeholder": "e.g., Order #12345, 1x Premium Widget"
     }
   },
   "footer": {

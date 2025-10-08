@@ -68,6 +68,18 @@
     "cover_letter": {
       "title": "Lettre de Motivation pour Candidature",
       "description": "Rédigez une lettre de motivation convaincante pour une offre d'emploi."
+    },
+    "promotional_email": {
+      "title": "E-mail Promotionnel",
+      "description": "Créez un e-mail convaincant pour promouvoir un produit ou un service."
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Rédigez une newsletter attrayante pour partager des mises à jour ou du contenu."
+    },
+    "transactional_email": {
+      "title": "E-mail Transactionnel",
+      "description": "Rédigez une confirmation de commande, un reçu ou un avis clair."
     }
   },
   "form_fields": {
@@ -170,6 +182,42 @@
     "matching_skills": {
       "label": "Vos Compétences et Expériences Correspondantes",
       "placeholder": "Décrivez brièvement comment vos compétences correspondent aux exigences."
+    },
+    "product_name": {
+      "label": "Nom du Produit / Service",
+      "placeholder": "ex: Notre nouveau widget premium"
+    },
+    "target_audience": {
+      "label": "Public Cible",
+      "placeholder": "ex: Amateurs de technologie, propriétaires de petites entreprises"
+    },
+    "offer_details": {
+      "label": "Détails de l'Offre",
+      "placeholder": "ex: 20% de réduction pour une durée limitée"
+    },
+    "call_to_action": {
+      "label": "Appel à l'Action",
+      "placeholder": "ex: Achetez Maintenant, En Savoir Plus"
+    },
+    "newsletter_title": {
+      "label": "Titre de la Newsletter",
+      "placeholder": "ex: Cette Semaine dans la Tech"
+    },
+    "main_content": {
+      "label": "Contenu Principal / Titre",
+      "placeholder": "Résumez le message clé de la newsletter."
+    },
+    "secondary_content": {
+      "label": "Contenu Secondaire (Optionnel)",
+      "placeholder": "Incluez des articles, liens ou mises à jour supplémentaires."
+    },
+    "transaction_type": {
+      "label": "Type de Transaction",
+      "placeholder": "ex: Confirmation de Commande, Réinitialisation de Mot de Passe"
+    },
+    "order_details": {
+      "label": "Détails de la Commande (Optionnel)",
+      "placeholder": "ex: Commande #12345, 1x Widget Premium"
     }
   },
   "footer": {

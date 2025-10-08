@@ -1,4 +1,4 @@
-import { Briefcase, MessageSquare, TrendingUp, UserMinus, MailQuestion, Handshake, Users, CalendarPlus, FileX2, FileText } from 'lucide-react';
+import { Briefcase, MessageSquare, TrendingUp, UserMinus, MailQuestion, Handshake, Users, CalendarPlus, FileX2, FileText, Megaphone, Newspaper, Receipt } from 'lucide-react';
 import { z } from 'zod';
 
 export const tones = ['formal', 'friendly', 'direct', 'humble'] as const;
@@ -79,6 +79,32 @@ export const coverLetterSchema = z.object({
   your_name: z.string().min(1, 'Your name is required.'),
 });
 
+// New Marketing Schemas
+export const promotionalEmailSchema = z.object({
+  product_name: z.string().min(1, 'Product or service name is required.'),
+  offer_details: z.string().min(1, 'Offer details are required.'),
+  call_to_action: z.string().min(1, 'A call to action is required.'),
+  target_audience: z.string().min(1, 'Target audience is required.'),
+  your_name: z.string().min(1, 'Your name is required.'),
+});
+
+export const newsletterSchema = z.object({
+  newsletter_title: z.string().min(1, 'Newsletter title is required.'),
+  main_content: z.string().min(1, 'Main content is required.'),
+  secondary_content: z.string().optional(),
+  call_to_action: z.string().min(1, 'A call to action is required.'),
+  your_name: z.string().min(1, 'Your name is required.'),
+});
+
+export const transactionalEmailSchema = z.object({
+  transaction_type: z.string().min(1, 'Transaction type is required (e.g., Order Confirmation).'),
+  recipient_name: z.string().min(1, 'Recipient name is required.'),
+  product_name: z.string().min(1, 'Product or service name is required.'),
+  order_details: z.string().optional(),
+  your_name: z.string().min(1, 'Your name is required.'),
+});
+
+
 export const scenarios = {
   salary_negotiation: {
     id: 'salary_negotiation',
@@ -149,6 +175,27 @@ export const scenarios = {
     icon: FileText,
     formSchema: coverLetterSchema,
     fields: ['recipient_name', 'job_title', 'company_name', 'job_requirements', 'matching_skills', 'your_name'] as const
+  },
+  promotional_email: {
+    id: 'promotional_email',
+    i18n_key: 'promotional_email',
+    icon: Megaphone,
+    formSchema: promotionalEmailSchema,
+    fields: ['product_name', 'target_audience', 'offer_details', 'call_to_action', 'your_name'] as const
+  },
+  newsletter: {
+    id: 'newsletter',
+    i18n_key: 'newsletter',
+    icon: Newspaper,
+    formSchema: newsletterSchema,
+    fields: ['newsletter_title', 'main_content', 'secondary_content', 'call_to_action', 'your_name'] as const
+  },
+  transactional_email: {
+    id: 'transactional_email',
+    i18n_key: 'transactional_email',
+    icon: Receipt,
+    formSchema: transactionalEmailSchema,
+    fields: ['transaction_type', 'recipient_name', 'product_name', 'order_details', 'your_name'] as const
   }
 };
 

@@ -68,6 +68,18 @@
     "cover_letter": {
       "title": "Carta de Presentación de Solicitud de Empleo",
       "description": "Escribe una carta de presentación convincente para una oferta de trabajo."
+    },
+    "promotional_email": {
+      "title": "Correo Promocional",
+      "description": "Crea un correo electrónico convincente para promocionar un producto o servicio."
+    },
+    "newsletter": {
+      "title": "Boletín Informativo",
+      "description": "Redacta un boletín informativo atractivo para compartir actualizaciones o contenido."
+    },
+    "transactional_email": {
+      "title": "Correo Transaccional",
+      "description": "Escribe una confirmación de pedido, recibo o notificación clara."
     }
   },
   "form_fields": {
@@ -170,6 +182,42 @@
     "matching_skills": {
       "label": "Tus Habilidades y Experiencias Coincidentes",
       "placeholder": "Describe brevemente cómo tus habilidades se alinean con los requisitos."
+    },
+    "product_name": {
+      "label": "Nombre del Producto / Servicio",
+      "placeholder": "ej., Nuestro nuevo widget premium"
+    },
+    "target_audience": {
+      "label": "Público Objetivo",
+      "placeholder": "ej., Entusiastas de la tecnología, propietarios de pequeñas empresas"
+    },
+    "offer_details": {
+      "label": "Detalles de la Oferta",
+      "placeholder": "ej., 20% de descuento por tiempo limitado"
+    },
+    "call_to_action": {
+      "label": "Llamada a la Acción",
+      "placeholder": "ej., Compra Ahora, Aprende Más"
+    },
+    "newsletter_title": {
+      "label": "Título del Boletín",
+      "placeholder": "ej., Esta Semana en Tecnología"
+    },
+    "main_content": {
+      "label": "Contenido Principal / Titular",
+      "placeholder": "Resume el mensaje clave del boletín."
+    },
+    "secondary_content": {
+      "label": "Contenido Secundario (Opcional)",
+      "placeholder": "Incluye artículos, enlaces o actualizaciones adicionales."
+    },
+    "transaction_type": {
+      "label": "Tipo de Transacción",
+      "placeholder": "ej., Confirmación de Pedido, Restablecimiento de Contraseña"
+    },
+    "order_details": {
+      "label": "Detalles del Pedido (Opcional)",
+      "placeholder": "ej., Pedido #12345, 1x Widget Premium"
     }
   },
   "footer": {
