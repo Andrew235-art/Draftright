@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -41,9 +42,16 @@ const prompt = ai.definePrompt({
   Language: {{{language}}}
 
   Generate an email draft that is appropriate for the given scenario, input, and tone. The draft should be written in the specified language.
+  
+  Your output must be structured like a professional email. Follow these formatting rules strictly:
+  1. Start with a "Subject:" line.
+  2. Use a double newline space (two blank lines) after the subject line before the salutation.
+  3. Use single newline spaces between paragraphs in the email body.
+  4. Use a double newline space before the closing sign-off (e.g., "Sincerely,").
+
   Ensure that the generated draft is well-structured, grammatically correct, and contextually relevant.
   The generated draft should be free of any potentially harmful or inappropriate content.
-  Only return the email draft. Do not include any extraneous information.
+  Only return the email draft itself, starting with the subject line. Do not include any extraneous information.
   `,
 });
 
