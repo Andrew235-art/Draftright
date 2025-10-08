@@ -152,5 +152,10 @@
       "label": "Razón para Rechazar",
       "placeholder": "ej., Debido a un compromiso previo y la carga de trabajo actual"
     }
+  },
+  "footer": {
+    "copyright": "DraftSense. Todos los derechos reservados.",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Uso"
   }
 }

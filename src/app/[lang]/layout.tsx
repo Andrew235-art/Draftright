@@ -1,4 +1,5 @@
 import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
 import { getDictionary } from '@/lib/dictionaries'
 import { Locale } from '@/i18n.config'
 
@@ -34,7 +35,8 @@ export default async function LangLayout({
   return (
     <div className="relative flex min-h-screen flex-col">
       <Header lang={lang} dict={dict.header} />
-      <div className="flex-1">{children}</div>
+      <main className="flex-1">{children}</main>
+      <Footer lang={lang} dict={dict.footer} />
     </div>
   )
 }

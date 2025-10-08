@@ -152,5 +152,10 @@
       "label": "Raison du Refus",
       "placeholder": "ex: En raison d'un engagement antérieur et de la charge de travail actuelle"
     }
+  },
+  "footer": {
+    "copyright": "DraftSense. Tous droits réservés.",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation"
   }
 }

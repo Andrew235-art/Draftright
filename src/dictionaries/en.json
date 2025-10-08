@@ -152,5 +152,10 @@
       "label": "Reason for Declining",
       "placeholder": "e.g., Due to a prior commitment and current workload"
     }
+  },
+  "footer": {
+    "copyright": "DraftSense. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use"
   }
 }
