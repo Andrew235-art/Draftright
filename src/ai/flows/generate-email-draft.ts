@@ -1,7 +1,7 @@
 'use server';
 
 /**
- * @fileOverview An email draft generation AI agent.
+ * @fileOverview An email draft generation agent.
  *
  * - generateEmailDraft - A function that handles the email draft generation process.
  * - GenerateEmailDraftInput - The input type for the generateEmailDraft function.
@@ -32,7 +32,7 @@ const prompt = ai.definePrompt({
   name: 'generateEmailDraftPrompt',
   input: {schema: GenerateEmailDraftInputSchema},
   output: {schema: GenerateEmailDraftOutputSchema},
-  prompt: `You are an AI assistant specializing in generating email drafts based on user-selected scenarios, structured input, desired tone, and language.
+  prompt: `You are an assistant specializing in generating email drafts based on user-selected scenarios, structured input, desired tone, and language.
 
   Scenario: {{{scenario}}}
   Input: {{#each input}}{{{@key}}}: {{{this}}}

@@ -34,7 +34,7 @@ const prompt = ai.definePrompt({
   name: 'controlOutputLanguagePrompt',
   input: {schema: ControlOutputLanguageInputSchema},
   output: {schema: ControlOutputLanguageOutputSchema},
-  prompt: `You are an AI assistant specialized in generating email drafts in multiple languages.
+  prompt: `You are an assistant specialized in generating email drafts in multiple languages.
   The user has selected the following language: {{{language}}}.
   Generate the email draft in the user's selected language. Ensure the draft is well-written and contextually appropriate.
 
