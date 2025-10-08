@@ -68,14 +68,20 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
     const [selectedScenario, setSelectedScenario] = useState<Scenario | null>(null);
     const { toast } = useToast();
     const [state, formAction, isPending] = useActionState<FormState, FormData>(generateDraftAction, { draft: undefined, error: undefined });
-    const formRef = useRef<HTMLFormElement>(null);
+    
+    const getDefaultValues = (scenario: Scenario | null) => {
+        if (!scenario) return { tone: 'formal' };
+        const defaultValues = scenario.fields.reduce((acc, field) => {
+            acc[field] = '';
+            return acc;
+        }, {} as Record<string, string>);
+        defaultValues.tone = 'formal';
+        return defaultValues;
+    }
 
     const form = useForm({
         resolver: zodResolver(selectedScenario?.formSchema || z.object({})),
-        defaultValues: selectedScenario ? selectedScenario.fields.reduce((acc, field) => {
-            acc[field] = '';
-            return acc;
-        }, { tone: 'formal' } as Record<string, string>) : {}
+        defaultValues: getDefaultValues(selectedScenario),
     });
 
     useEffect(() => {
@@ -94,12 +100,7 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
 
     const handleScenarioSelect = (scenario: Scenario) => {
         setSelectedScenario(scenario);
-        const defaultValues = scenario.fields.reduce((acc, field) => {
-            acc[field] = '';
-            return acc;
-        }, {} as Record<string, string>);
-        defaultValues.tone = 'formal';
-        form.reset(defaultValues);
+        form.reset(getDefaultValues(scenario));
         setStep('form');
     };
 
@@ -125,19 +126,13 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
         return (
             <Form {...form}>
                 <form 
-                    ref={formRef}
-                    action={formAction}
-                    onSubmit={form.handleSubmit(() => {
-                        if (!selectedScenario) return;
-                        const formData = new FormData(formRef.current!);
+                    action={(formData: FormData) => {
                         const values = form.getValues();
-                        
                         formData.append('scenarioId', selectedScenario.id);
                         formData.append('language', lang);
                         formData.append('formData', JSON.stringify(values));
-                        
                         formAction(formData);
-                    })}
+                    }}
                     className="space-y-8"
                 >
                     <Card>
