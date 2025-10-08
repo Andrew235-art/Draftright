@@ -64,6 +64,10 @@
     "decline_request": {
       "title": "Decline a Request",
       "description": "Gracefully say 'no' to a request or invitation."
+    },
+    "cover_letter": {
+      "title": "Job Application Cover Letter",
+      "description": "Write a compelling cover letter for a job opening."
     }
   },
   "form_fields": {
@@ -124,7 +128,7 @@
       "placeholder": "e.g., software engineering"
     },
     "job_title": {
-      "label": "Job Title You Interviewed For",
+      "label": "Job Title",
       "placeholder": "e.g., Product Manager"
     },
     "key_discussion_point": {
@@ -154,6 +158,18 @@
     "reason": {
       "label": "Reason for Declining",
       "placeholder": "e.g., Due to a prior commitment and current workload"
+    },
+    "company_name": {
+      "label": "Company Name",
+      "placeholder": "e.g., Acme Inc."
+    },
+    "job_requirements": {
+      "label": "Key Job Requirements",
+      "placeholder": "Copy-paste 2-3 key requirements from the job description."
+    },
+    "matching_skills": {
+      "label": "Your Matching Skills & Experiences",
+      "placeholder": "Briefly describe how your skills align with the requirements."
     }
   },
   "footer": {

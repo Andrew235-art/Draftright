@@ -64,6 +64,10 @@
     "decline_request": {
       "title": "Refuser une Demande",
       "description": "Dites 'non' avec élégance à une demande ou une invitation."
+    },
+    "cover_letter": {
+      "title": "Lettre de Motivation pour Candidature",
+      "description": "Rédigez une lettre de motivation convaincante pour une offre d'emploi."
     }
   },
   "form_fields": {
@@ -124,7 +128,7 @@
       "placeholder": "ex: génie logiciel"
     },
     "job_title": {
-      "label": "Intitulé du Poste pour lequel vous avez postulé",
+      "label": "Intitulé du Poste",
       "placeholder": "ex: Chef de Produit"
     },
     "key_discussion_point": {
@@ -154,6 +158,18 @@
     "reason": {
       "label": "Raison du Refus",
       "placeholder": "ex: En raison d'un engagement antérieur et de la charge de travail actuelle"
+    },
+    "company_name": {
+      "label": "Nom de l'entreprise",
+      "placeholder": "ex: Acme Inc."
+    },
+    "job_requirements": {
+      "label": "Exigences Clés du Poste",
+      "placeholder": "Copiez-collez 2-3 exigences clés de la description de poste."
+    },
+    "matching_skills": {
+      "label": "Vos Compétences et Expériences Correspondantes",
+      "placeholder": "Décrivez brièvement comment vos compétences correspondent aux exigences."
     }
   },
   "footer": {

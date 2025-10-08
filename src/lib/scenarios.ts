@@ -1,4 +1,4 @@
-import { Briefcase, MessageSquare, TrendingUp, UserMinus, MailQuestion, Handshake, Users, CalendarPlus, FileX2 } from 'lucide-react';
+import { Briefcase, MessageSquare, TrendingUp, UserMinus, MailQuestion, Handshake, Users, CalendarPlus, FileX2, FileText } from 'lucide-react';
 import { z } from 'zod';
 
 export const tones = ['formal', 'friendly', 'direct', 'humble'] as const;
@@ -35,7 +35,6 @@ export const resignationLetterSchema = z.object({
     your_name: z.string().min(1, 'Your name is required.'),
 });
 
-// New Schemas
 export const informationalInterviewSchema = z.object({
   recipient_name: z.string().min(1, 'Recipient name is required.'),
   recipient_role_company: z.string().min(1, "Recipient's role and company are required."),
@@ -68,6 +67,15 @@ export const declineRequestSchema = z.object({
   recipient_name: z.string().min(1, 'Recipient name is required.'),
   request_declined: z.string().min(1, 'The request being declined is required.'),
   reason: z.string().min(1, 'A reason for declining is required.'),
+  your_name: z.string().min(1, 'Your name is required.'),
+});
+
+export const coverLetterSchema = z.object({
+  recipient_name: z.string().min(1, 'Recipient name is required.'),
+  job_title: z.string().min(1, 'Job title is required.'),
+  company_name: z.string().min(1, 'Company name is required.'),
+  job_requirements: z.string().min(1, 'Job requirements are required.'),
+  matching_skills: z.string().min(1, 'Matching skills are required.'),
   your_name: z.string().min(1, 'Your name is required.'),
 });
 
@@ -134,6 +142,13 @@ export const scenarios = {
     icon: FileX2,
     formSchema: declineRequestSchema,
     fields: ['recipient_name', 'request_declined', 'reason', 'your_name'] as const
+  },
+  cover_letter: {
+    id: 'cover_letter',
+    i18n_key: 'cover_letter',
+    icon: FileText,
+    formSchema: coverLetterSchema,
+    fields: ['recipient_name', 'job_title', 'company_name', 'job_requirements', 'matching_skills', 'your_name'] as const
   }
 };
 

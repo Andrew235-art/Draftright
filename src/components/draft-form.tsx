@@ -53,9 +53,8 @@ const renderFormField = (field: any, fieldName: FormFields, dict: Dictionary) =>
     const commonProps = {
         ...field,
         placeholder: dict.form_fields[fieldName].placeholder,
-        value: field.value || '',
     }
-    const useTextarea = ['key_achievements', 'progress_summary', 'blockers', 'next_steps', 'specific_questions'].includes(fieldName);
+    const useTextarea = ['key_achievements', 'progress_summary', 'blockers', 'next_steps', 'specific_questions', 'job_requirements', 'matching_skills'].includes(fieldName);
 
     if (useTextarea) {
         return <Textarea {...commonProps} />

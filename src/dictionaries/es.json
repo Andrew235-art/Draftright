@@ -64,6 +64,10 @@
     "decline_request": {
       "title": "Rechazar una Solicitud",
       "description": "Di 'no' con elegancia a una solicitud o invitación."
+    },
+    "cover_letter": {
+      "title": "Carta de Presentación de Solicitud de Empleo",
+      "description": "Escribe una carta de presentación convincente para una oferta de trabajo."
     }
   },
   "form_fields": {
@@ -124,7 +128,7 @@
       "placeholder": "ej., ingeniería de software"
     },
     "job_title": {
-      "label": "Puesto para el que te Entrevistaron",
+      "label": "Puesto de Trabajo",
       "placeholder": "ej., Gerente de Producto"
     },
     "key_discussion_point": {
@@ -154,6 +158,18 @@
     "reason": {
       "label": "Razón para Rechazar",
       "placeholder": "ej., Debido a un compromiso previo y la carga de trabajo actual"
+    },
+    "company_name": {
+      "label": "Nombre de la Empresa",
+      "placeholder": "ej., Acme Inc."
+    },
+    "job_requirements": {
+      "label": "Requisitos Clave del Puesto",
+      "placeholder": "Copia y pega 2-3 requisitos clave de la descripción del puesto."
+    },
+    "matching_skills": {
+      "label": "Tus Habilidades y Experiencias Coincidentes",
+      "placeholder": "Describe brevemente cómo tus habilidades se alinean con los requisitos."
     }
   },
   "footer": {
