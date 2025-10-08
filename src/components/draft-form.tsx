@@ -1,0 +1,205 @@
+"use client"
+
+import { useState, useTransition, useEffect, useActionState } from 'react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+import { generateDraftAction, FormState } from '@/app/actions'
+import { scenarios, ScenarioId, Scenario, Tone, tones, FormFields } from '@/lib/scenarios'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+import { Loader2 } from 'lucide-react'
+import { OutputDisplay } from './output-display'
+import { cn } from '@/lib/utils'
+import { useToast } from '@/hooks/use-toast'
+
+type Step = 'scenario' | 'form' | 'result'
+type Dictionary = any;
+
+const ScenarioSelector = ({ dict, onSelect }: { dict: Dictionary, onSelect: (scenario: Scenario) => void }) => (
+    <Card>
+        <CardHeader>
+            <CardTitle className="font-headline text-2xl">{dict.main.scenario_select_title}</CardTitle>
+            <CardDescription>Start by choosing a template for your email.</CardDescription>
+        </CardHeader>
+        <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {Object.values(scenarios).map((scenario) => {
+                const Icon = scenario.icon;
+                return (
+                    <button
+                        key={scenario.id}
+                        onClick={() => onSelect(scenario)}
+                        className="p-4 border rounded-lg text-left hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-all"
+                    >
+                        <div className="flex items-center gap-4">
+                            <Icon className="h-8 w-8 text-primary" />
+                            <div>
+                                <h3 className="font-semibold text-lg">{dict.scenarios[scenario.i18n_key].title}</h3>
+                                <p className="text-sm text-muted-foreground">{dict.scenarios[scenario.i18n_key].description}</p>
+                            </div>
+                        </div>
+                    </button>
+                )
+            })}
+        </CardContent>
+    </Card>
+);
+
+const renderFormField = (field: FormFields, dict: Dictionary) => {
+    const commonProps = {
+        placeholder: dict.form_fields[field].placeholder,
+    }
+    const useTextarea = ['key_achievements', 'progress_summary', 'blockers', 'next_steps', 'specific_questions'].includes(field);
+
+    if (useTextarea) {
+        return <Textarea {...commonProps} />
+    }
+    return <Input {...commonProps} />
+}
+
+
+export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
+    const [step, setStep] = useState<Step>('scenario');
+    const [selectedScenario, setSelectedScenario] = useState<Scenario | null>(null);
+    const { toast } = useToast();
+    const [state, formAction, isPending] = useActionState<FormState, FormData>(generateDraftAction, { draft: undefined, error: undefined });
+
+    const form = useForm({
+        resolver: zodResolver(selectedScenario?.formSchema || z.object({})),
+        defaultValues: {},
+    });
+
+    useEffect(() => {
+        if (state?.error) {
+            toast({
+                variant: "destructive",
+                title: dict.main.error_toast.title,
+                description: state.error,
+            });
+        }
+        if (state?.draft) {
+            setStep('result');
+        }
+    }, [state, toast, dict]);
+
+
+    const handleScenarioSelect = (scenario: Scenario) => {
+        setSelectedScenario(scenario);
+        form.reset({});
+        setStep('form');
+    };
+
+    const onSubmit = (values: z.infer<typeof selectedScenario.formSchema>) => {
+        const formData = new FormData();
+        formData.append('scenarioId', selectedScenario.id);
+        formData.append('tone', form.getValues('tone'));
+        formData.append('language', lang);
+        formData.append('formData', JSON.stringify(values));
+        formAction(formData);
+    };
+
+    if (step === 'scenario') {
+        return <ScenarioSelector dict={dict} onSelect={handleScenarioSelect} />;
+    }
+
+    if (step === 'result' && state.draft) {
+        return (
+            <div className="space-y-8">
+                <OutputDisplay draft={state.draft} dict={dict.main} />
+                <Button onClick={() => {
+                  setStep('scenario');
+                  setSelectedScenario(null);
+                  form.reset();
+                }}>Start Over</Button>
+            </div>
+        );
+    }
+    
+    if (step === 'form' && selectedScenario) {
+        return (
+            <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="font-headline text-2xl">{dict.main.form_title}</CardTitle>
+                            <CardDescription>{dict.scenarios[selectedScenario.i18n_key].title}</CardDescription>
+                        </CardHeader>
+                        <CardContent className="space-y-4">
+                            {selectedScenario.fields.map((fieldName) => (
+                                <FormField
+                                    key={fieldName}
+                                    control={form.control}
+                                    name={fieldName}
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>{dict.form_fields[fieldName].label}</FormLabel>
+                                            <FormControl>
+                                                {renderFormField(fieldName, dict)}
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            ))}
+                        </CardContent>
+                    </Card>
+
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="font-headline text-2xl">{dict.main.tone_title}</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <FormField
+                                control={form.control}
+                                name="tone"
+                                defaultValue="formal"
+                                render={({ field }) => (
+                                    <FormItem className="space-y-3">
+                                        <FormControl>
+                                            <RadioGroup
+                                                onValueChange={field.onChange}
+                                                defaultValue={field.value}
+                                                className="flex flex-wrap gap-4"
+                                            >
+                                                {tones.map((tone) => (
+                                                    <FormItem key={tone} className="flex items-center space-x-3 space-y-0">
+                                                        <FormControl>
+                                                            <RadioGroupItem value={tone} id={tone}/>
+                                                        </FormControl>
+                                                        <FormLabel className="font-normal capitalize cursor-pointer" htmlFor={tone}>
+                                                            {dict.main.tones[tone]}
+                                                        </FormLabel>
+                                                    </FormItem>
+                                                ))}
+                                            </RadioGroup>
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                        </CardContent>
+                    </Card>
+
+                    <div className="flex justify-end">
+                        <Button type="submit" disabled={isPending} size="lg">
+                            {isPending ? (
+                                <>
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    {dict.main.generating_button}
+                                </>
+                            ) : (
+                                dict.main.generate_button
+                            )}
+                        </Button>
+                    </div>
+                </form>
+            </Form>
+        )
+    }
+
+    return null;
+}

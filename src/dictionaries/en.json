@@ -1,0 +1,96 @@
+{
+  "header": {
+    "title": "DraftSense",
+    "lang": "Language"
+  },
+  "main": {
+    "title": "DraftSense",
+    "subtitle": "The fastest, most reliable, and context-specific AI tool for drafting critical professional and personal emails.",
+    "scenario_select_title": "1. Choose a Scenario",
+    "form_title": "2. Provide Context",
+    "tone_title": "3. Select a Tone",
+    "generate_button": "Generate Draft",
+    "generating_button": "Generating...",
+    "output_title": "4. Your AI-Generated Draft",
+    "copy_button": "Copy to Clipboard",
+    "copied_button": "Copied!",
+    "tones": {
+      "formal": "Formal",
+      "friendly": "Friendly",
+      "direct": "Direct",
+      "humble": "Humble"
+    },
+    "error_toast": {
+        "title": "Error",
+        "description": "Failed to generate draft. Please try again."
+    }
+  },
+  "scenarios": {
+    "salary_negotiation": {
+      "title": "Salary Negotiation",
+      "description": "Craft a persuasive email to negotiate your salary."
+    },
+    "project_update": {
+      "title": "Project Update",
+      "description": "Provide a clear and concise project status update."
+    },
+    "feedback_request": {
+      "title": "Feedback Request",
+      "description": "Professionally ask for feedback on your work."
+    },
+    "resignation_letter": {
+      "title": "Resignation Letter",
+      "description": "Write a formal resignation letter."
+    }
+  },
+  "form_fields": {
+    "current_salary": {
+      "label": "Current Salary",
+      "placeholder": "e.g., $80,000"
+    },
+    "desired_salary": {
+      "label": "Desired Salary",
+      "placeholder": "e.g., $95,000"
+    },
+    "key_achievements": {
+      "label": "Key Achievements",
+      "placeholder": "e.g., Increased sales by 20%, Led a successful project"
+    },
+    "project_name": {
+      "label": "Project Name",
+      "placeholder": "e.g., Q3 Marketing Campaign"
+    },
+    "progress_summary": {
+      "label": "Progress Summary",
+      "placeholder": "What has been completed?"
+    },
+    "blockers": {
+      "label": "Blockers (Optional)",
+      "placeholder": "Are there any issues impeding progress?"
+    },
+    "next_steps": {
+      "label": "Next Steps",
+      "placeholder": "What are the upcoming tasks?"
+    },
+    "work_item": {
+      "label": "Work Item for Feedback",
+      "placeholder": "e.g., The proposal document for Project X"
+    },
+    "specific_questions": {
+      "label": "Specific Questions (Optional)",
+      "placeholder": "e.g., Is the budget section clear enough?"
+    },
+    "last_day": {
+      "label": "Last Day of Employment",
+      "placeholder": "e.g., 2024-12-31"
+    },
+    "recipient_name": {
+      "label": "Recipient Name",
+      "placeholder": "e.g., Jane Doe"
+    },
+    "your_name": {
+      "label": "Your Name",
+      "placeholder": "e.g., John Smith"
+    }
+  }
+}

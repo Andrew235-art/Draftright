@@ -1,0 +1,96 @@
+{
+  "header": {
+    "title": "DraftSense",
+    "lang": "Idioma"
+  },
+  "main": {
+    "title": "DraftSense",
+    "subtitle": "La herramienta de IA más rápida, fiable y específica para redactar correos electrónicos profesionales y personales críticos.",
+    "scenario_select_title": "1. Elige un Escenario",
+    "form_title": "2. Proporciona Contexto",
+    "tone_title": "3. Selecciona un Tono",
+    "generate_button": "Generar Borrador",
+    "generating_button": "Generando...",
+    "output_title": "4. Tu Borrador Generado por IA",
+    "copy_button": "Copiar al Portapapeles",
+    "copied_button": "¡Copiado!",
+    "tones": {
+      "formal": "Formal",
+      "friendly": "Amistoso",
+      "direct": "Directo",
+      "humble": "Humilde"
+    },
+    "error_toast": {
+        "title": "Error",
+        "description": "No se pudo generar el borrador. Por favor, inténtalo de nuevo."
+    }
+  },
+  "scenarios": {
+    "salary_negotiation": {
+      "title": "Negociación Salarial",
+      "description": "Elabora un correo persuasivo para negociar tu salario."
+    },
+    "project_update": {
+      "title": "Actualización de Proyecto",
+      "description": "Proporciona una actualización clara y concisa del estado del proyecto."
+    },
+    "feedback_request": {
+      "title": "Solicitud de Comentarios",
+      "description": "Pide comentarios sobre tu trabajo de forma profesional."
+    },
+    "resignation_letter": {
+      "title": "Carta de Renuncia",
+      "description": "Escribe una carta de renuncia formal."
+    }
+  },
+  "form_fields": {
+    "current_salary": {
+      "label": "Salario Actual",
+      "placeholder": "ej., $80,000"
+    },
+    "desired_salary": {
+      "label": "Salario Deseado",
+      "placeholder": "ej., $95,000"
+    },
+    "key_achievements": {
+      "label": "Logros Clave",
+      "placeholder": "ej., Aumenté las ventas en un 20%, Lideré un proyecto exitoso"
+    },
+    "project_name": {
+      "label": "Nombre del Proyecto",
+      "placeholder": "ej., Campaña de Marketing Q3"
+    },
+    "progress_summary": {
+      "label": "Resumen del Progreso",
+      "placeholder": "¿Qué se ha completado?"
+    },
+    "blockers": {
+      "label": "Obstáculos (Opcional)",
+      "placeholder": "¿Hay algún problema que impida el progreso?"
+    },
+    "next_steps": {
+      "label": "Próximos Pasos",
+      "placeholder": "¿Cuáles son las próximas tareas?"
+    },
+    "work_item": {
+      "label": "Elemento de Trabajo para Comentarios",
+      "placeholder": "ej., El documento de propuesta para el Proyecto X"
+    },
+    "specific_questions": {
+      "label": "Preguntas Específicas (Opcional)",
+      "placeholder": "ej., ¿La sección de presupuesto es suficientemente clara?"
+    },
+    "last_day": {
+      "label": "Último Día de Empleo",
+      "placeholder": "ej., 2024-12-31"
+    },
+    "recipient_name": {
+      "label": "Nombre del Destinatario",
+      "placeholder": "ej., Jane Doe"
+    },
+    "your_name": {
+      "label": "Tu Nombre",
+      "placeholder": "ej., John Smith"
+    }
+  }
+}

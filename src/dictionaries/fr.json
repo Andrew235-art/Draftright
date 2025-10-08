@@ -1,0 +1,96 @@
+{
+  "header": {
+    "title": "DraftSense",
+    "lang": "Langue"
+  },
+  "main": {
+    "title": "DraftSense",
+    "subtitle": "L'outil d'IA le plus rapide, fiable et contextuel pour rédiger des e-mails professionnels et personnels critiques.",
+    "scenario_select_title": "1. Choisissez un Scénario",
+    "form_title": "2. Fournissez le Contexte",
+    "tone_title": "3. Sélectionnez un Ton",
+    "generate_button": "Générer le Brouillon",
+    "generating_button": "Génération...",
+    "output_title": "4. Votre Brouillon Généré par IA",
+    "copy_button": "Copier dans le Presse-papiers",
+    "copied_button": "Copié !",
+    "tones": {
+      "formal": "Formel",
+      "friendly": "Amical",
+      "direct": "Direct",
+      "humble": "Humblé"
+    },
+    "error_toast": {
+        "title": "Erreur",
+        "description": "Échec de la génération du brouillon. Veuillez réessayer."
+    }
+  },
+  "scenarios": {
+    "salary_negotiation": {
+      "title": "Négociation de Salaire",
+      "description": "Rédigez un e-mail persuasif pour négocier votre salaire."
+    },
+    "project_update": {
+      "title": "Mise à Jour du Projet",
+      "description": "Fournissez une mise à jour claire et concise de l'état du projet."
+    },
+    "feedback_request": {
+      "title": "Demande de Feedback",
+      "description": "Demandez des commentaires sur votre travail de manière professionnelle."
+    },
+    "resignation_letter": {
+      "title": "Lettre de Démission",
+      "description": "Rédigez une lettre de démission formelle."
+    }
+  },
+  "form_fields": {
+    "current_salary": {
+      "label": "Salaire Actuel",
+      "placeholder": "ex: 80 000 $"
+    },
+    "desired_salary": {
+      "label": "Salaire Souhaité",
+      "placeholder": "ex: 95 000 $"
+    },
+    "key_achievements": {
+      "label": "Réalisations Clés",
+      "placeholder": "ex: Augmentation des ventes de 20%, Direction d'un projet réussi"
+    },
+    "project_name": {
+      "label": "Nom du Projet",
+      "placeholder": "ex: Campagne Marketing T3"
+    },
+    "progress_summary": {
+      "label": "Résumé des Progrès",
+      "placeholder": "Qu'est-ce qui a été accompli ?"
+    },
+    "blockers": {
+      "label": "Bloquants (Optionnel)",
+      "placeholder": "Y a-t-il des problèmes qui entravent la progression ?"
+    },
+    "next_steps": {
+      "label": "Prochaines Étapes",
+      "placeholder": "Quelles sont les tâches à venir ?"
+    },
+    "work_item": {
+      "label": "Élément de Travail pour Feedback",
+      "placeholder": "ex: Le document de proposition pour le Projet X"
+    },
+    "specific_questions": {
+      "label": "Questions Spécifiques (Optionnel)",
+      "placeholder": "ex: La section budget est-elle assez claire ?"
+    },
+    "last_day": {
+      "label": "Dernier Jour d'Emploi",
+      "placeholder": "ex: 2024-12-31"
+    },
+    "recipient_name": {
+      "label": "Nom du Destinataire",
+      "placeholder": "ex: Jane Doe"
+    },
+    "your_name": {
+      "label": "Votre Nom",
+      "placeholder": "ex: John Smith"
+    }
+  }
+}
