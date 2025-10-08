@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState, useTransition, useEffect, useActionState } from 'react'
@@ -49,11 +50,12 @@ const ScenarioSelector = ({ dict, onSelect }: { dict: Dictionary, onSelect: (sce
     </Card>
 );
 
-const renderFormField = (field: FormFields, dict: Dictionary) => {
+const renderFormField = (field: any, fieldName: FormFields, dict: Dictionary) => {
     const commonProps = {
-        placeholder: dict.form_fields[field].placeholder,
+        ...field,
+        placeholder: dict.form_fields[fieldName].placeholder,
     }
-    const useTextarea = ['key_achievements', 'progress_summary', 'blockers', 'next_steps', 'specific_questions'].includes(field);
+    const useTextarea = ['key_achievements', 'progress_summary', 'blockers', 'next_steps', 'specific_questions'].includes(fieldName);
 
     if (useTextarea) {
         return <Textarea {...commonProps} />
@@ -93,7 +95,8 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
         setStep('form');
     };
 
-    const onSubmit = (values: z.infer<typeof selectedScenario.formSchema>) => {
+    const onSubmit = (values: z.infer<any>) => {
+        if (!selectedScenario) return;
         const formData = new FormData();
         formData.append('scenarioId', selectedScenario.id);
         formData.append('tone', form.getValues('tone'));
@@ -138,7 +141,7 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
                                         <FormItem>
                                             <FormLabel>{dict.form_fields[fieldName].label}</FormLabel>
                                             <FormControl>
-                                                {renderFormField(fieldName, dict)}
+                                                {renderFormField(field, fieldName, dict)}
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
