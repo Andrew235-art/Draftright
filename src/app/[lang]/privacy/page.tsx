@@ -31,7 +31,7 @@ export default async function PrivacyPage({ params: { lang } }: { params: { lang
         <h2 className="mb-4">Security</h2>
         <p className="mb-4">
           We work hard to protect our users from unauthorized access to or unauthorized alteration, disclosure or destruction of information we hold.
-        p>
+        </p>
       </article>
     </div>
   )
