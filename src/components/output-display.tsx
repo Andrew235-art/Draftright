@@ -3,8 +3,8 @@
 import { useState } from 'react'
 import { Check, Clipboard, RefreshCw } from 'lucide-react'
 import { Button } from './ui/button'
-import { Textarea } from './ui/textarea'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
+import { cn } from '@/lib/utils'
 
 interface OutputDisplayProps {
   draft: string
@@ -51,11 +51,13 @@ export function OutputDisplay({ draft, dict, onStartOver }: OutputDisplayProps) 
         </div>
       </CardHeader>
       <CardContent>
-        <Textarea
-          value={draft}
-          className="min-h-[300px] text-base bg-muted/30"
-          readOnly
-        />
+        <div
+          className={cn(
+            'min-h-[300px] w-full rounded-md border border-input bg-muted/30 px-3 py-2 text-base ring-offset-background md:text-sm whitespace-pre-wrap'
+          )}
+        >
+          {draft}
+        </div>
       </CardContent>
     </Card>
   )
