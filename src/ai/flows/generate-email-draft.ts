@@ -72,10 +72,14 @@ const generateEmailDraftFlow = ai.defineFlow(
       .map(([key, value]) => `${key}: ${value}`)
       .join('\n  ');
       
-    const {output} = await prompt({
-      ...input,
-      inputString,
-    });
+    const promptInput = {
+      scenario: input.scenario,
+      tone: input.tone,
+      language: input.language,
+      inputString: inputString,
+    };
+
+    const {output} = await prompt(promptInput);
     return output!;
   }
 );
