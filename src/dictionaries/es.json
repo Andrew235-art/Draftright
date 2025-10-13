@@ -1,10 +1,10 @@
 {
   "header": {
-    "title": "Promptly",
+    "title": "Draftright",
     "lang": "Idioma"
   },
   "main": {
-    "title": "Promptly",
+    "title": "Draftright",
     "subtitle": "La herramienta más rápida, fiable y específica para redactar correos electrónicos profesionales y personales críticos.",
     "scenario_select_title": "1. Elige un Escenario",
     "scenario_select_subtitle": "Empieza eligiendo una plantilla para tu correo electrónico.",
@@ -230,7 +230,7 @@
     }
   },
   "footer": {
-    "copyright": "Promptly. Todos los derechos reservados.",
+    "copyright": "Draftright. Todos los derechos reservados.",
     "privacy": "Política de Privacidad",
     "terms": "Términos de Uso"
   }

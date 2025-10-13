@@ -11,7 +11,7 @@ export default async function PrivacyPage({ params: { lang } }: { params: { lang
         <h1 className="mb-8">{dict.footer.privacy}</h1>
         
         <p className="mb-4">
-          Your privacy is important to us. This Privacy Policy explains how Promptly handles your information when you use our email generation service. Our core privacy principle is simple: we do not store your email drafts or the inputs you provide to create them.
+          Your privacy is important to us. This Privacy Policy explains how Draftright handles your information when you use our email generation service. Our core privacy principle is simple: we do not store your email drafts or the inputs you provide to create them.
         </p>
 
         <h2 className="mb-4">Information We Process</h2>
