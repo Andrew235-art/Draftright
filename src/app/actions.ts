@@ -22,12 +22,14 @@ export async function generateDraftAction(formData: FormData): Promise<FormState
     const tone = formData.get('tone') as string;
     const language = formData.get('language') as string;
     
-    const scenarioFormData: Record<string, any> = {};
+    // Extract only the fields relevant to the current scenario for validation.
+    const fieldsToValidate: Record<string, any> = {};
     for (const field of scenarioDetails.fields) {
-        scenarioFormData[field] = formData.get(field);
+        fieldsToValidate[field] = formData.get(field);
     }
     
-    const parsedFormData = scenarioDetails.formSchema.safeParse(scenarioFormData);
+    // Validate the extracted data.
+    const parsedFormData = scenarioDetails.formSchema.safeParse(fieldsToValidate);
     if (!parsedFormData.success) {
         console.error(parsedFormData.error.flatten().fieldErrors);
         const errorMessages = Object.values(parsedFormData.error.flatten().fieldErrors).flat().join(', ');
@@ -36,7 +38,7 @@ export async function generateDraftAction(formData: FormData): Promise<FormState
     
     const result = await generateEmailDraft({
       scenario: scenarioDetails.i18n_key,
-      input: parsedFormData.data,
+      input: parsedFormData.data, // Use the successfully validated data.
       tone: tone,
       language: language,
     });
