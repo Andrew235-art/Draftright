@@ -1,12 +1,11 @@
 
-
 "use client"
 
-import { useState, useEffect, useActionState, useRef } from 'react'
+import { useState, useEffect, useTransition } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { generateDraftAction, FormState } from '@/app/actions'
+import { generateDraftAction } from '@/app/actions'
 import { scenarios, ScenarioId, Scenario, FormFields } from '@/lib/scenarios'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -68,7 +67,8 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
     const [step, setStep] = useState<Step>('scenario');
     const [selectedScenario, setSelectedScenario] = useState<Scenario | null>(null);
     const { toast } = useToast();
-    const [state, formAction, isPending] = useActionState<FormState, FormData>(generateDraftAction, { draft: undefined, error: undefined });
+    const [draft, setDraft] = useState<string | undefined>(undefined);
+    const [isPending, startTransition] = useTransition();
     
     const getDefaultValues = (scenario: Scenario | null) => {
         if (!scenario) return { tone: 'formal' };
@@ -86,19 +86,32 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
         mode: 'onChange'
     });
 
-    useEffect(() => {
-        if (state?.error) {
-            toast({
-                variant: "destructive",
-                title: dict.main.error_toast.title,
-                description: state.error,
-            });
-        }
-        if (state?.draft) {
-            setStep('result');
-        }
-    }, [state, toast, dict]);
+    const onSubmit = (values: z.infer<typeof selectedScenario.formSchema>) => {
+      if (!selectedScenario) return;
 
+      const formData = new FormData();
+      formData.append('scenarioId', selectedScenario.id);
+      formData.append('language', lang);
+      formData.append('tone', values.tone);
+
+      for (const field of selectedScenario.fields) {
+          formData.append(field, values[field] || '');
+      }
+      
+      startTransition(async () => {
+          const result = await generateDraftAction(formData);
+          if (result.error) {
+              toast({
+                  variant: "destructive",
+                  title: dict.main.error_toast.title,
+                  description: result.error,
+              });
+          } else if (result.draft) {
+              setDraft(result.draft);
+              setStep('result');
+          }
+      });
+  };
 
     const handleScenarioSelect = (scenario: Scenario) => {
         setSelectedScenario(scenario);
@@ -109,6 +122,7 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
     const handleStartOver = () => {
         setStep('scenario');
         setSelectedScenario(null);
+        setDraft(undefined);
         form.reset({});
     }
 
@@ -116,12 +130,12 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
         return <ScenarioSelector dict={dict} onSelect={handleScenarioSelect} />;
     }
 
-    if (step === 'result' && state.draft) {
+    if (step === 'result' && draft) {
         return (
             <div className="space-y-8">
-                <OutputDisplay draft={state.draft} dict={dict.main} />
+                <OutputDisplay draft={draft} dict={dict.main} />
                  <div className="flex justify-start">
-                    <Button type="button" variant="ghost" onClick={handleStartOver}>
+                    <Button type="button" variant="outline" onClick={handleStartOver}>
                         {dict.main.start_over_button}
                     </Button>
                 </div>
@@ -133,12 +147,9 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
         return (
             <Form {...form}>
                 <form 
-                    action={formAction}
+                    onSubmit={form.handleSubmit(onSubmit)}
                     className="space-y-8"
                 >
-                    <input type="hidden" name="scenarioId" value={selectedScenario.id} />
-                    <input type="hidden" name="language" value={lang} />
-                    
                     <Card>
                         <CardHeader>
                             <CardTitle className="font-headline text-2xl">{dict.main.form_title}</CardTitle>
@@ -179,7 +190,7 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
                                                 onValueChange={field.onChange}
                                                 defaultValue={field.value}
                                                 className="flex flex-wrap gap-4"
-                                                name="tone"
+                                                {...field}
                                             >
                                                 {['formal', 'friendly', 'direct', 'humble'].map((tone) => (
                                                     <FormItem key={tone} className="flex items-center space-x-3 space-y-0">
