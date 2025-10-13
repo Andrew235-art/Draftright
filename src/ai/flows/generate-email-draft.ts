@@ -31,13 +31,18 @@ export async function generateEmailDraft(input: GenerateEmailDraftInput): Promis
 
 const prompt = ai.definePrompt({
   name: 'generateEmailDraftPrompt',
-  input: {schema: GenerateEmailDraftInputSchema},
+  input: {schema: z.object({
+    scenario: z.string(),
+    inputString: z.string(),
+    tone: z.string(),
+    language: z.string(),
+  })},
   output: {schema: GenerateEmailDraftOutputSchema},
   prompt: `You are an assistant specializing in generating email drafts based on user-selected scenarios, structured input, desired tone, and language.
 
   Scenario: {{{scenario}}}
-  Input: {{#each input}}{{{@key}}}: {{{this}}}
-  {{/each}}
+  Input:
+{{{inputString}}}
   Tone: {{{tone}}}
   Language: {{{language}}}
 
@@ -62,7 +67,15 @@ const generateEmailDraftFlow = ai.defineFlow(
     outputSchema: GenerateEmailDraftOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
+    // Convert the input record to a string for the prompt.
+    const inputString = Object.entries(input.input)
+      .map(([key, value]) => `${key}: ${value}`)
+      .join('\n  ');
+      
+    const {output} = await prompt({
+      ...input,
+      inputString,
+    });
     return output!;
   }
 );
