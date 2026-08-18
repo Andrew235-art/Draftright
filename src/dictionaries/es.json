@@ -3,6 +3,10 @@
     "title": "Draftright",
     "lang": "Idioma"
   },
+  "mode": {
+    "email_label": "Borradores de Correo",
+    "content_label": "Contenido y Redes"
+  },
   "main": {
     "title": "Draftright",
     "subtitle": "La herramienta más rápida, fiable y específica para redactar correos electrónicos profesionales y personales críticos.",
@@ -91,7 +95,82 @@
       "description": "Escribe una confirmación de pedido, recibo o notificación clara."
     }
   },
+  "content": {
+    "scenario_select_title": "1. Elige un Tipo de Contenido",
+    "scenario_select_subtitle": "Empieza eligiendo lo que quieres crear.",
+    "form_title": "2. Proporciona Contexto",
+    "generate_button": "Generar Contenido",
+    "output_title": "3. Tu Contenido Generado",
+    "scenarios": {
+      "blog_article": {
+        "title": "Artículo de Blog",
+        "description": "Genera un artículo de blog completo y optimizado para SEO con título, meta descripción y cuerpo."
+      },
+      "linkedin_post": {
+        "title": "Publicación de LinkedIn",
+        "description": "Escribe una publicación de LinkedIn que capte la atención y genere interacción."
+      },
+      "x_post": {
+        "title": "Publicación de X (Twitter)",
+        "description": "Escribe una publicación directa que respete el límite de caracteres de X."
+      },
+      "instagram_post": {
+        "title": "Descripción de Instagram",
+        "description": "Escribe una descripción atractiva con un buen gancho y hashtags."
+      },
+      "facebook_post": {
+        "title": "Publicación de Facebook",
+        "description": "Escribe una publicación cercana que invite a comentar."
+      },
+      "youtube_description": {
+        "title": "Descripción de YouTube",
+        "description": "Escribe una descripción de video con gancho, resumen y etiquetas."
+      }
+    },
+    "blog_output": {
+      "title_label": "Título SEO",
+      "title_options_label": "Elige o edita un título",
+      "meta_description_label": "Meta Descripción",
+      "body_label": "Cuerpo del Artículo",
+      "keyword_checklist_title": "Lista de Verificación de Palabra Clave",
+      "keyword_in_title": "La palabra clave aparece en el título",
+      "keyword_in_meta": "La palabra clave aparece en la meta descripción",
+      "keyword_in_intro": "La palabra clave aparece en las primeras 100 palabras",
+      "keyword_in_heading": "La palabra clave aparece en al menos un encabezado",
+      "placeholders_internal_links": "{count} marcador(es) de enlace interno por completar",
+      "placeholders_sources": "{count} marcador(es) de fuente por completar",
+      "copy_button": "Copiar",
+      "copied_button": "¡Copiado!",
+      "length_short": "demasiado corto",
+      "length_good": "dentro del rango recomendado",
+      "length_long": "demasiado largo"
+    },
+    "social_output": {
+      "post_label": "Publicación",
+      "hashtags_label": "Hashtags",
+      "copy_button": "Copiar",
+      "copied_button": "¡Copiado!",
+      "char_limit_ok": "dentro del límite",
+      "char_limit_exceeded": "excede el límite de la plataforma"
+    }
+  },
   "form_fields": {
+    "topic": {
+      "label": "Tema",
+      "placeholder": "ej., Cómo las pequeñas empresas pueden reducir costos en la nube"
+    },
+    "target_keyword": {
+      "label": "Palabra Clave Objetivo",
+      "placeholder": "ej., reducir costos en la nube"
+    },
+    "key_points": {
+      "label": "Puntos Clave a Cubrir",
+      "placeholder": "Enumera los puntos, datos o argumentos principales a incluir"
+    },
+    "link": {
+      "label": "Enlace (Opcional)",
+      "placeholder": "ej., https://ejemplo.com/tu-recurso"
+    },
     "current_salary": {
       "label": "Salario Actual",
       "placeholder": "ej., $80,000"

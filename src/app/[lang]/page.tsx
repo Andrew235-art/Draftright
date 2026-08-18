@@ -1,6 +1,6 @@
 import { Locale } from '@/i18n.config'
 import { getDictionary } from '@/lib/dictionaries'
-import { DraftForm } from '@/components/draft-form'
+import { ModeSwitcher } from '@/components/mode-switcher'
 import { HowItWorks } from '@/components/how-it-works'
 
 export default async function Home({
@@ -23,7 +23,7 @@ export default async function Home({
 
       <HowItWorks dict={dict.how_it_works} />
 
-      <DraftForm dict={dict} lang={lang} />
+      <ModeSwitcher dict={dict} lang={lang} />
     </div>
   )
 }
