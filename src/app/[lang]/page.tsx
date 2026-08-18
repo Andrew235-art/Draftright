@@ -4,10 +4,11 @@ import { DraftForm } from '@/components/draft-form'
 import { HowItWorks } from '@/components/how-it-works'
 
 export default async function Home({
-  params: { lang },
+  params,
 }: {
-  params: { lang: Locale }
+  params: Promise<{ lang: Locale }>
 }) {
+  const { lang } = await params
   const dict = await getDictionary(lang)
   return (
     <div className="container mx-auto px-4 py-8 md:py-12 max-w-4xl">

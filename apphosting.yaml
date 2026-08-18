@@ -5,3 +5,15 @@ runConfig:
   # Increase this value if you'd like to automatically spin up
   # more instances in response to increased traffic.
   maxInstances: 1
+
+# Draft generation calls the Gemini API and requires GEMINI_API_KEY to be set,
+# or every draft request fails with a FAILED_PRECONDITION error.
+# Create the secret once with:
+#   firebase apphosting:secrets:set GEMINI_API_KEY
+# then grant this backend access with:
+#   firebase apphosting:secrets:grantaccess GEMINI_API_KEY --backend=<your-backend-id>
+env:
+  - variable: GEMINI_API_KEY
+    secret: GEMINI_API_KEY
+    availability:
+      - RUNTIME
