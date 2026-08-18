@@ -2,11 +2,11 @@
 "use client"
 
 import { useState, useEffect, useTransition } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, Resolver } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { generateDraftAction } from '@/app/actions'
-import { scenarios, ScenarioId, Scenario, FormFields } from '@/lib/scenarios'
+import { scenarios, tones, ScenarioId, Scenario, FormFields } from '@/lib/scenarios'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
@@ -80,13 +80,16 @@ export function DraftForm({ dict, lang }: { dict: Dictionary; lang: string }) {
         return defaultValues;
     }
 
-    const form = useForm({
-        resolver: zodResolver(selectedScenario?.formSchema || z.object({})),
+    const toneSchema = z.object({ tone: z.enum(tones) });
+    const form = useForm<Record<string, string>>({
+        resolver: zodResolver(
+            selectedScenario ? selectedScenario.formSchema.extend(toneSchema.shape) : toneSchema
+        ) as unknown as Resolver<Record<string, string>>,
         defaultValues: getDefaultValues(selectedScenario),
         mode: 'onChange'
     });
 
-    const onSubmit = (values: z.infer<typeof selectedScenario.formSchema>) => {
+    const onSubmit = (values: Record<string, string>) => {
       if (!selectedScenario) return;
 
       const formData = new FormData();

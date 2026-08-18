@@ -3,7 +3,8 @@ import { Footer } from '@/components/footer'
 import { getDictionary } from '@/lib/dictionaries'
 import { Locale } from '@/i18n.config'
 
-export async function generateMetadata({ params: { lang } }: { params: { lang: Locale }}) {
+export async function generateMetadata({ params }: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = await params
   const dict = await getDictionary(lang)
   return {
     title: {
@@ -26,11 +27,12 @@ export async function generateMetadata({ params: { lang } }: { params: { lang: L
 
 export default async function LangLayout({
   children,
-  params: { lang },
+  params,
 }: {
   children: React.ReactNode
-  params: { lang: Locale }
+  params: Promise<{ lang: Locale }>
 }) {
+  const { lang } = await params
   const dict = await getDictionary(lang)
   return (
     <div className="relative flex min-h-screen flex-col">

@@ -2,7 +2,8 @@
 import { Locale } from '@/i18n.config'
 import { getDictionary } from '@/lib/dictionaries'
 
-export default async function TermsPage({ params: { lang } }: { params: { lang: Locale } }) {
+export default async function TermsPage({ params }: { params: Promise<{ lang: Locale }> }) {
+  const { lang } = await params
   const dict = await getDictionary(lang)
 
   return (
