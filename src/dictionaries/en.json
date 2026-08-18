@@ -3,6 +3,10 @@
     "title": "Draftright",
     "lang": "Language"
   },
+  "mode": {
+    "email_label": "Email Drafts",
+    "content_label": "Content & Social"
+  },
   "main": {
     "title": "Draftright",
     "subtitle": "The fastest, most reliable, and context-specific tool for drafting critical professional and personal emails.",
@@ -91,7 +95,82 @@
       "description": "Write a clear order confirmation, receipt, or notice."
     }
   },
+  "content": {
+    "scenario_select_title": "1. Choose a Content Type",
+    "scenario_select_subtitle": "Start by choosing what you want to create.",
+    "form_title": "2. Provide Context",
+    "generate_button": "Generate Content",
+    "output_title": "3. Your Generated Content",
+    "scenarios": {
+      "blog_article": {
+        "title": "Blog Article",
+        "description": "Generate a full, SEO-structured blog article with title, meta description, and body."
+      },
+      "linkedin_post": {
+        "title": "LinkedIn Post",
+        "description": "Write a scroll-stopping LinkedIn post that drives engagement."
+      },
+      "x_post": {
+        "title": "X (Twitter) Post",
+        "description": "Write a punchy, character-limit-aware post for X."
+      },
+      "instagram_post": {
+        "title": "Instagram Caption",
+        "description": "Write an engaging caption with a strong hook and hashtags."
+      },
+      "facebook_post": {
+        "title": "Facebook Post",
+        "description": "Write a conversational post built to spark comments."
+      },
+      "youtube_description": {
+        "title": "YouTube Description",
+        "description": "Write a video description with a hook, summary, and tags."
+      }
+    },
+    "blog_output": {
+      "title_label": "SEO Title",
+      "title_options_label": "Choose or edit a title",
+      "meta_description_label": "Meta Description",
+      "body_label": "Article Body",
+      "keyword_checklist_title": "Keyword Checklist",
+      "keyword_in_title": "Target keyword appears in the title",
+      "keyword_in_meta": "Target keyword appears in the meta description",
+      "keyword_in_intro": "Target keyword appears in the first 100 words",
+      "keyword_in_heading": "Target keyword appears in at least one heading",
+      "placeholders_internal_links": "{count} internal link placeholder(s) to fill in",
+      "placeholders_sources": "{count} source placeholder(s) to fill in",
+      "copy_button": "Copy",
+      "copied_button": "Copied!",
+      "length_short": "too short",
+      "length_good": "within the recommended range",
+      "length_long": "too long"
+    },
+    "social_output": {
+      "post_label": "Post",
+      "hashtags_label": "Hashtags",
+      "copy_button": "Copy",
+      "copied_button": "Copied!",
+      "char_limit_ok": "within limit",
+      "char_limit_exceeded": "exceeds platform limit"
+    }
+  },
   "form_fields": {
+    "topic": {
+      "label": "Topic",
+      "placeholder": "e.g., How small businesses can cut cloud costs"
+    },
+    "target_keyword": {
+      "label": "Target Keyword",
+      "placeholder": "e.g., reduce cloud costs"
+    },
+    "key_points": {
+      "label": "Key Points to Cover",
+      "placeholder": "List the main points, facts, or arguments to include"
+    },
+    "link": {
+      "label": "Link (Optional)",
+      "placeholder": "e.g., https://example.com/your-resource"
+    },
     "current_salary": {
       "label": "Current Salary",
       "placeholder": "e.g., $80,000"

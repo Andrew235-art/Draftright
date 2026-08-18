@@ -3,6 +3,10 @@
     "title": "Draftright",
     "lang": "Langue"
   },
+  "mode": {
+    "email_label": "Brouillons d'Email",
+    "content_label": "Contenu & Réseaux"
+  },
   "main": {
     "title": "Draftright",
     "subtitle": "L'outil le plus rapide, fiable et contextuel pour rédiger des e-mails professionnels et personnels critiques.",
@@ -91,7 +95,82 @@
       "description": "Rédigez une confirmation de commande, un reçu ou un avis clair."
     }
   },
+  "content": {
+    "scenario_select_title": "1. Choisissez un Type de Contenu",
+    "scenario_select_subtitle": "Commencez par choisir ce que vous voulez créer.",
+    "form_title": "2. Fournissez du Contexte",
+    "generate_button": "Générer le Contenu",
+    "output_title": "3. Votre Contenu Généré",
+    "scenarios": {
+      "blog_article": {
+        "title": "Article de Blog",
+        "description": "Générez un article de blog complet et optimisé pour le référencement avec titre, méta-description et corps."
+      },
+      "linkedin_post": {
+        "title": "Publication LinkedIn",
+        "description": "Rédigez une publication LinkedIn accrocheuse qui suscite l'engagement."
+      },
+      "x_post": {
+        "title": "Publication X (Twitter)",
+        "description": "Rédigez une publication percutante en respectant la limite de caractères de X."
+      },
+      "instagram_post": {
+        "title": "Légende Instagram",
+        "description": "Rédigez une légende engageante avec une bonne accroche et des hashtags."
+      },
+      "facebook_post": {
+        "title": "Publication Facebook",
+        "description": "Rédigez une publication conviviale qui invite aux commentaires."
+      },
+      "youtube_description": {
+        "title": "Description YouTube",
+        "description": "Rédigez une description de vidéo avec accroche, résumé et tags."
+      }
+    },
+    "blog_output": {
+      "title_label": "Titre SEO",
+      "title_options_label": "Choisissez ou modifiez un titre",
+      "meta_description_label": "Méta-description",
+      "body_label": "Corps de l'Article",
+      "keyword_checklist_title": "Liste de Vérification du Mot-Clé",
+      "keyword_in_title": "Le mot-clé cible apparaît dans le titre",
+      "keyword_in_meta": "Le mot-clé cible apparaît dans la méta-description",
+      "keyword_in_intro": "Le mot-clé cible apparaît dans les 100 premiers mots",
+      "keyword_in_heading": "Le mot-clé cible apparaît dans au moins un titre de section",
+      "placeholders_internal_links": "{count} espace(s) réservé(s) pour lien interne à compléter",
+      "placeholders_sources": "{count} espace(s) réservé(s) pour source à compléter",
+      "copy_button": "Copier",
+      "copied_button": "Copié !",
+      "length_short": "trop court",
+      "length_good": "dans la plage recommandée",
+      "length_long": "trop long"
+    },
+    "social_output": {
+      "post_label": "Publication",
+      "hashtags_label": "Hashtags",
+      "copy_button": "Copier",
+      "copied_button": "Copié !",
+      "char_limit_ok": "dans la limite",
+      "char_limit_exceeded": "dépasse la limite de la plateforme"
+    }
+  },
   "form_fields": {
+    "topic": {
+      "label": "Sujet",
+      "placeholder": "ex., Comment les petites entreprises peuvent réduire leurs coûts cloud"
+    },
+    "target_keyword": {
+      "label": "Mot-Clé Cible",
+      "placeholder": "ex., réduire les coûts cloud"
+    },
+    "key_points": {
+      "label": "Points Clés à Couvrir",
+      "placeholder": "Listez les principaux points, faits ou arguments à inclure"
+    },
+    "link": {
+      "label": "Lien (Optionnel)",
+      "placeholder": "ex., https://exemple.com/votre-ressource"
+    },
     "current_salary": {
       "label": "Salaire Actuel",
       "placeholder": "ex: 80 000 $"
